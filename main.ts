@@ -1,9 +1,11 @@
-radio.onReceivedNumber(function (receivedNumber) {
-    input2 = 0
+serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+    basic.showNumber(0)
+    basic.pause(500)
+    basic.clearScreen()
 })
-input.onButtonPressed(Button.A, function () {
-    radio.sendNumber(1)
-})
-let input2 = 0
+serial.redirect(
+SerialPin.P0,
+SerialPin.P1,
+BaudRate.BaudRate115200
+)
 serial.redirectToUSB()
-radio.setGroup(1)
